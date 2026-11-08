@@ -5,28 +5,11 @@
   const label = button?.querySelector(".music-toggle__label");
   const status = document.querySelector("[data-music-status]");
   if (!audio || !button || !label) return;
-  const tracks = [
-    {
-      id: "young-and-beautiful",
-      title: "Young And Beautiful",
-      src: "assets/audio/young-and-beautiful.mp3",
-    },
-    {
-      id: "mai-mai-ben-nhau",
-      title: "Mãi Mãi Bên Nhau — Noo Phước Thịnh",
-      src: "assets/audio/mai-mai-ben-nhau.mp3",
-    },
-    {
-      id: "forever-and-ever-and-always",
-      title: "Forever and Ever and Always — Ryan Mack",
-      src: "assets/audio/forever-and-ever-and-always.m4a",
-    },
-    {
-      id: "doan-ket-happy-ending",
-      title: "Đoạn Kết (Happy Ending) — HITStory Live Version",
-      src: "assets/audio/doan-ket-happy-ending.mp3",
-    },
-  ];
+  const track = {
+    id: "mai-mai-ben-nhau",
+    title: "Mãi Mãi Bên Nhau — Noo Phước Thịnh",
+    src: "assets/audio/mai-mai-ben-nhau.mp3",
+  };
   let selectedTrack = null;
   let wanted = false;
   let attempt = 0;
@@ -35,8 +18,8 @@
 
   function selectTrack() {
     if (selectedTrack) return;
-    // One equally weighted draw per invitation. Pause/resume keeps that song.
-    selectedTrack = tracks[Math.floor(Math.random() * tracks.length)];
+    // Load the song only after the invitation is opened.
+    selectedTrack = track;
     audio.src = selectedTrack.src;
     audio.dataset.track = selectedTrack.id;
     button.title = `Nhạc nền: ${selectedTrack.title}`;

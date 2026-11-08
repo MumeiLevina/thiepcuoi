@@ -644,10 +644,10 @@ try {
   }
   await metrics(390, 844);
   for (const [roll, track, extension] of [
-    [0.125, "young-and-beautiful", "mp3"],
+    [0.125, "mai-mai-ben-nhau", "mp3"],
     [0.375, "mai-mai-ben-nhau", "mp3"],
-    [0.625, "forever-and-ever-and-always", "m4a"],
-    [0.875, "doan-ket-happy-ending", "mp3"],
+    [0.625, "mai-mai-ben-nhau", "mp3"],
+    [0.875, "mai-mai-ben-nhau", "mp3"],
   ]) {
     const seed = await send("Page.addScriptToEvaluateOnNewDocument", {
       source: `Math.random=()=>${roll}`,
@@ -700,7 +700,7 @@ try {
     });
   }
   passed(
-    "All four random music outcomes play; only chosen audio loads; pause/resume preserves the draw",
+    "Only Mai Mai Ben Nhau plays across all random seeds; pause/resume preserves the song",
   );
   const blockedAudio = await send("Page.addScriptToEvaluateOnNewDocument", {
     source: `HTMLMediaElement.prototype.play=function(){return Promise.reject(new DOMException('Simulated autoplay policy','NotAllowedError'))}`,
